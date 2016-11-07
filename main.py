@@ -3,6 +3,7 @@ import os
 import json
 import time
 
+# Does not change
 APP_ID = "Vj8pQggXLhLy0WHahglCD4N1nAkkXQtGYpq2HrHD7H1nvmbT55KqtN6RSF4ILB%2Fi"
 LOCALE = "en"
 
@@ -11,9 +12,13 @@ LOGIN_ENDPOINT = "Membership/ValidateUserWithCulture"
 DEVICE_LIST_ENDPOINT = "api/UserDeviceDetails"
 DEVICE_SET_ENDPOINT = "Device/setDeviceAttribute"
 DEVICE_STATUS_ENDPOINT = "Device/getDeviceAttribute"
+# up to here
 
-USERNAME = "<MYQ_LOGIN_USERNAME>"
-PASSWORD = "<MYQ_LOGIN_PASSWORD>"
+# Example
+#USERNAME = "test%40test.com"
+#PASSWORD = "Passw0rd"
+USERNAME = "<insert username in a url-encoded format>"
+PASSWORD = "<insert password in a url-encoded format>"
 
 myq_userid                  = ""
 myq_security_token          = ""
@@ -21,8 +26,9 @@ myq_cached_login_response   = ""
 myq_device_id               = ""
 
 def lambda_handler(event, context):
-
-    if event['session']['application']['applicationId'] != "amzn1.ask.skill.<your-alexa-skills-id>":
+# Example
+# if event['session']['application']['applicationId'] != "amzn1.ask.skill.f81avc7f-3c7f-467f-8ce7-41c7a10fc8w3":
+    if event['session']['application']['applicationId'] != "<insert skill id>":
         print "Invalid Application ID"
         raise
     else:
@@ -57,6 +63,7 @@ def close():
 def status():
     response = check_door_state()
     state = response["AttributeValue"]
+
     if state == "9":
         return "open"
     elif state == "2":
@@ -65,6 +72,10 @@ def status():
         return "opening"
     elif state == "5":
         return "closing"
+    elif state == "1":
+        return "open"
+    elif state == "4":
+        return "opening"
     else:
         return state + " is an unknown state for the door."
 
