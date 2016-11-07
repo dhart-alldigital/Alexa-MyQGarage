@@ -3,6 +3,7 @@ import os
 import json
 import time
 
+# Does not change
 APP_ID = "Vj8pQggXLhLy0WHahglCD4N1nAkkXQtGYpq2HrHD7H1nvmbT55KqtN6RSF4ILB%2Fi"
 LOCALE = "en"
 
@@ -11,6 +12,7 @@ LOGIN_ENDPOINT = "Membership/ValidateUserWithCulture"
 DEVICE_LIST_ENDPOINT = "api/UserDeviceDetails"
 DEVICE_SET_ENDPOINT = "Device/setDeviceAttribute"
 DEVICE_STATUS_ENDPOINT = "Device/getDeviceAttribute"
+# up to here
 
 # Example
 #USERNAME = "test%40test.com"
